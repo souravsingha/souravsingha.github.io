@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    fieldset {
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    legend {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      margin-bottom: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type="radio"] {
+      margin-right: 5px;
+    }
+
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-top: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    .loading-spinner {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #4CAF50;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .overlay {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.8);
+      z-index: 10;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .branding {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <div class="form-container">
+    <h1>Contact Form</h1>
+    <form id="myForm">
+      <fieldset>
+        <legend>Personal Details</legend>
+        
+        <label>
+          Salutation
+          <select name="salutation" required>
+            <option value="" disabled selected>--None--</option>
+            <option>Mr.</option>
+            <option>Ms.</option>
+            <option>Mrs.</option>
+            <option>Dr.</option>
+            <option>Prof.</option>
+          </select>
+        </label>
+        
+        <label>First name: <input type="text" name="firstName" required /></label>
+        
+        <label>Last name: <input type="text" name="lastName" required /></label>
+        
+        <label>Gender :</label>
+        <label><input type="radio" name="gender" value="male" required /> Male</label>
+        <label><input type="radio" name="gender" value="female" required /> Female</label>
+        
+        <label>Email:<input type="email" name="email" required /></label>
+        
+        <label>Date of Birth:<input type="date" name="birthDate" required></label>
+        
+        <label>
+          Address :
+          <textarea name="address" cols="30" rows="3" required></textarea>
+        </label>
+        
+        <button type="submit">Submit</button>
+        
+      </fieldset>
+      <div class="branding">Made ❤️ by Sourav!</div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('myForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const form = e.target;
+      const formData = new FormData(form);
+      const overlay = document.querySelector('.overlay');
+
+      overlay.style.display = 'flex';
+
+      fetch('https://script.google.com/macros/s/AKfycbwA1NgtYOISyf7Z97E_NL_y3gTxsOlo3DtpWol0eSSGcO06caJP8_6N_yDUS9b4o5oWtA/exec', {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => response.json())
+      .then(data => {
+        overlay.style.display = 'none';
+        if (data.result === 'success') {
+          alert('Form submitted successfully!');
+          form.reset();
+        } else {
+          alert('There was an error submitting the form');
+        }
+      })
+      .catch(error => {
+        overlay.style.display = 'none';
+        console.error('Error:', error);
+        alert('There was an error submitting the form');
+      });
+    });
+  </script>
+</body>
+</html>
