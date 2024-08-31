@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get In Touch</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .icon {
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #563d7c;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #422c61;
+        }
+
+        .send-icon {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2><span class="icon">📞</span> Get In Touch</h2>
+        <form>
+            <div>
+                <span class="icon">👤</span>
+                <input type="text" placeholder="Name" required>
+            </div>
+            <div>
+                <span class="icon">✉️</span>
+                <input type="email" placeholder="Email" required>
+            </div>
+            <div>
+                <span class="icon">📞</span>
+                <input type="tel" placeholder="Phone">
+            </div>
+            <div>
+                <span class="icon">💬</span>
+                <textarea placeholder="Message" required></textarea>
+            </div>
+            <button type="submit">Submit <span class="send-icon">✈️</span></button>
+        </form>
+    </div>
+</body>
+</html>
