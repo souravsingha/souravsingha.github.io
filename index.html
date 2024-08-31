@@ -3,92 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get In Touch</title>
+    <title>Feedback Form</title>
     <style>
+        * { 
+            font-family: 'Roboto', sans-serif; 
+        }
+
         body {
-            font-family: sans-serif;
-            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            background-color: #a2a2a2;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
         }
 
-        .container {
+        .feedback-card {
             background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 350px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: -0.6rem 0.6rem 0 rgba(29, 30, 28, 0.26);
+            width: 300px;
         }
 
-        h2 {
+        .feedback-header {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
             text-align: center;
-            margin-bottom: 20px;
+            font-weight: bold;
         }
 
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        textarea {
-            width: 100%;
+        .feedback-body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input, textarea {
+            border: 2px solid rgba(0, 0, 0, 0.6);
+            background-color: #dadad3;
             padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            font-size: 1rem;
         }
 
-        textarea {
-            height: 100px;
-            resize: vertical;
-        }
-
-        .icon {
-            margin-right: 10px;
+        input:focus, textarea:focus {
+            outline: none;
         }
 
         button {
-            background-color: #563d7c;
-            color: #fff;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
+            border: 2px solid rgba(0, 0, 0, 0.6);
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-            width: 100%;
+            font-size: 1rem;
+        }
+
+        button:focus {
+            outline: none;
         }
 
         button:hover {
-            background-color: #422c61;
-        }
-
-        .send-icon {
-            margin-left: 5px;
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2><span class="icon">📞</span> Get In Touch</h2>
-        <form>
-            <div>
-                <span class="icon">👤</span>
-                <input type="text" placeholder="Name" required>
-            </div>
-            <div>
-                <span class="icon">✉️</span>
-                <input type="email" placeholder="Email" required>
-            </div>
-            <div>
-                <span class="icon">📞</span>
-                <input type="tel" placeholder="Phone">
-            </div>
-            <div>
-                <span class="icon">💬</span>
-                <textarea placeholder="Message" required></textarea>
-            </div>
-            <button type="submit">Submit <span class="send-icon">✈️</span></button>
+    <div class="feedback-card">
+        <div class="feedback-header">SEND FEEDBACK</div>
+        <form class="feedback-body">
+            <input class="feedback-body__email" placeholder="Email" type="email" required>
+            <textarea class="feedback-body__message" placeholder="Message" type="text" required></textarea>
+            <button class="feedback-body__submit" type="submit">SEND</button>
         </form>
     </div>
 </body>
